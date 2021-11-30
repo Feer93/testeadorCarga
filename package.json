@@ -1,0 +1,18 @@
+{
+  "name": "test-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "escalabilidad.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./escalabilidad.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "faker": "^5.5.3",
+    "qs": "^6.10.1"
+  }
+}
