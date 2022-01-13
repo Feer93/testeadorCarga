@@ -13,6 +13,7 @@ function sleep(ms) {
   }
 
 async function sendData(urlDestino,info){
+   console.time("TiempoRespuesta")
     axios( {
           method: 'POST',
           url: urlDestino,
@@ -23,6 +24,7 @@ async function sendData(urlDestino,info){
             'Content-Type': 'application/x-www-form-urlencoded'
           }
     }).then(res =>{
+        console.timeEnd("TiempoRespuesta")
         console.log(res.data)
     }).catch(err =>{
         console.log("ERROR")
@@ -31,14 +33,13 @@ async function sendData(urlDestino,info){
 }
 
 
-for (let index = 1; index <= 1000; index++) {
+for (let index = 1; index <= 400; index++) {
     //Ojo que puede generar URLs no safe, se puede filtrar el protocol para q sea HTTP O HTTPS
     var fakeURL =  faker.internet.protocol() + '://' + faker.internet.domainName();
     const object = {'url': fakeURL}
     
-    sendData(baseURL + '/api/testing',object)
-    if(index % 10 === 0) {
-        await sleep(500)
-    }
+    sendData(baseURL + '/api/link',object)
+     await sleep(200)
+    
 }
 
