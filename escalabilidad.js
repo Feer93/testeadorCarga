@@ -34,9 +34,11 @@ async function sendData(urlDestino,info){
 
 
 for (let index = 1; index <= 400; index++) {
-    //Ojo que puede generar URLs no safe, se puede filtrar el protocol para q sea HTTP O HTTPS
+    //Generamos URLs altearias
     var fakeURL =  faker.internet.protocol() + '://' + faker.internet.domainName();
-    const object = {'url': fakeURL}
+    var randomNumber = Math.random()
+    //Con una probabilidad <0.3 pedimos Qr
+    const object = {'url': fakeURL,'createQr': (randomNumber >= 0.7)}
     
     sendData(baseURL + '/api/link',object)
      await sleep(200)
